@@ -9,3 +9,13 @@ class InputValid:
         except ValueError:
             return False
 
+    def get_valid_input(self, prompt, value_type):
+        while True:
+            value = input(prompt)
+            if self.validate_input(value, value_type):
+                if value_type == 'int':
+                    return int(value)
+                elif value_type == 'float':
+                    return float(value)
+            else:
+                print("Error")
