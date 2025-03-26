@@ -31,3 +31,30 @@ class CalcGUI:
 
         self.result_text = Text(self.root, width=40, height=10)
         self.result_text.grid(row=4, column=0, columnspan=2)
+
+    def calculate_tire(self):
+        width = self.width_entry.get()
+        tire_profile = self.tire_profile_entry.get()
+        diameter = self.diameter_entry.get()
+
+        input_validator = InputValid()
+
+        if not (input_validator.validate_input(width, 'int') and input_validator.validate_input(tire_profile,'float') and input_validator.validate_input(diameter, 'int')):
+            messagebox.showerror("Error", "Введите корректные данные")
+            return
+
+        width = int(width)
+        tire_profile = int(tire_profile)
+        diameter = int(diameter)
+
+        tire = Tire(width, tire_profile, diameter)
+        tire_calc = TireCalc(tire)
+        res = tire.calc_result(tire_calc)
+
+        self.result_text.delete(1.0, END)
+        self.result_text.insert(END, res)
+
+root = Tk()
+gui = CalcGUI(root)
+
+root.mainloop()
