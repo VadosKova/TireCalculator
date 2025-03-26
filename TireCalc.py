@@ -11,3 +11,7 @@ class TireCalc:
     def calculate_diameter(self):
         sidewall_height = self.calculate_sidewall_height()
         return (sidewall_height * 2) + (self.tire.diameter * 25.4)
+
+    def calculate_circumference(self):
+        diameter = self.calculate_diameter()
+        return math.pi * diameter
