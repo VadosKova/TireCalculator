@@ -15,3 +15,7 @@ class TireCalc:
     def calculate_circumference(self):
         diameter = self.calculate_diameter()
         return math.pi * diameter
+
+    def calculate_revolutions_per_km(self):
+        circumference = self.calculate_circumference()
+        return 1000 / circumference
